@@ -460,7 +460,7 @@ def main():
     parser = argparse.ArgumentParser(description="AI CLI - Modern terminal-based LLM interface")
     parser.add_argument('prompt', nargs='*', help='Prompt to send to AI')
     parser.add_argument('--setup', action='store_true', help='Setup API key')
-    parser.add_argument('--model', default='x-ai/grok-4.1-fast:free', help='Model to use')
+    parser.add_argument('--model', default='x-ai/grok-4.1-fast:free', help='Model to use (default: x-ai/grok-4.1-fast:free)')
     
     args = parser.parse_args()
     console = Console()

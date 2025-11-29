@@ -16,10 +16,10 @@ A modern, beautiful terminal-based LLM interface with file system access, powere
 ### Prerequisites
 
 - Python 3.8 or higher
-- pip3
+- pip
 - OpenRouter API key ([Get one here](https://openrouter.ai/keys))
 
-### Quick Install
+### Linux/macOS Quick Install
 
 ```bash
 # Clone or download this repository
@@ -28,20 +28,30 @@ chmod +x install.sh
 ./install.sh
 ```
 
-### Manual Installation
+### Windows Installation
+
+#### Using Command Prompt (CMD)
+```cmd
+install.bat
+```
+
+#### Using PowerShell
+```powershell
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+### Manual Installation (All Platforms)
 
 ```bash
 # Install dependencies
-pip3 install --user -r requirements.txt
+pip install -r requirements.txt
 
-# Make executable
+# Linux/macOS: Make executable and create symlink (optional)
 chmod +x ai_cli.py
-
-# Create symlink (optional)
 mkdir -p ~/.local/bin
 ln -s $(pwd)/ai_cli.py ~/.local/bin/ai
 
-# Add to PATH if not already (add to ~/.bashrc)
+# Add to PATH if not already (add to ~/.bashrc or ~/.zshrc)
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
@@ -101,19 +111,21 @@ ai "Read config.json and explain what it does"
 
 ## Configuration 📝
 
-Config file location: `~/.config/ai-cli/config.json`
+Config file location:
+- Linux/macOS: `~/.config/ai-cli/config.json`
+- Windows: `%APPDATA%\ai-cli\config.json`
 
 You can manually edit this file to change settings:
 ```json
 {
-  "api_key": "your-api-key",
-  "model": "x-ai/grok-beta"
+  "api_key": -api-key",
+  "model": "x-ai/grok-4.1-fast:free"
 }
 ```
 
 ## Models 🤖
 
-Default model: `x-ai/grok-beta`
+Default model: `x-ai/grok-4.1-fast:free`
 
 To use a different model:
 ```bash
@@ -121,10 +133,11 @@ ai --model "anthropic/claude-3-opus" "Your prompt here"
 ```
 
 Available models on OpenRouter:
-- `x-ai/grok-beta` (default)
-- `anthropic/claude-3-opus`
-- `openai/gpt-4-turbo`
-- `google/gemini-pro`
+- `x-ai/grok-4.1-fast:free` (default - free tier)
+- `openai/gpt-5.1-codex-mini`
+- `google/gemini-2.5-flash`
+- `google/gemini-2.0-flash-001`
+- `google/gemini-2.5-flash-lite`
 - And many more at [OpenRouter](https://openrouter.ai/models)
 
 ## Troubleshooting 🔧
